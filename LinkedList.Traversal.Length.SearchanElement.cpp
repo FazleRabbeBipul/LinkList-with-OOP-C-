@@ -4,22 +4,6 @@
 using namespace __gnu_pbds;
 using namespace std;
 
-const long long mod = 1e9 + 7;
-int dx[] = {0, 0, +1, -1};
-int dy[] = {+1, -1, 0, 0};
-const long long maxN = 2e5 + 5;
-
-#define ll long long
-#define pb push_back
-#define ff first
-#define ss second
-#define pii pair<int, int>
-#define pll pair<long long int, long long int>
-
-#define ALL(s) (s).begin(), (s).end()
-#define rALL(s) (s).rbegin(), (s).rend()
-#define show(x) cout << #x << " : " << x << endl
-
 class Node
 {
 public:
@@ -75,7 +59,7 @@ void TravarseLL(Node *head)
 
 int main()
 {
-    
+
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
