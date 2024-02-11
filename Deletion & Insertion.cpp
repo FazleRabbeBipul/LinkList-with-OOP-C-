@@ -81,6 +81,32 @@ Node *removek(Node *head, int k)
     return head;
 }
 
+Node *removeEL(Node *head, int val)
+{
+    Node *temp = head;
+    Node *pre = NULL;
+
+    if (head->data == val)
+    {
+        head = temp->next;
+        free(temp);
+        return head;
+    }
+
+    while (temp->next != NULL)
+    {
+        if (temp->data == val)
+        {
+            pre->next = temp->next;
+            free(temp);
+            break;
+        }
+        pre = temp;
+        temp = temp->next;
+    }
+    return head;
+}
+
 void TravarseLL(Node *head)
 {
     Node *temp = head;
@@ -101,9 +127,9 @@ int main()
 
     Node *head = ArrayToLL(arr);
 
-    int k = 3;
-    // cin >> k;
+    int k = 2;
 
-    head = removek(head, k);
+    head = removeEL(head, k); // 2 5 8 9  ----> 5 8 9
+    head = removek(head, k);  // 5 8 9 -----> 5 9
     TravarseLL(head);
 }
