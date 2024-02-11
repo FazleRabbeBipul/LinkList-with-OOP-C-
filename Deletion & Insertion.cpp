@@ -50,17 +50,35 @@ Node *ArrayToLL(vector<int> &arr)
     return head;
 }
 
-int LengthOfLL(Node *head)
+Node *removek(Node *head, int k)
 {
-    int cnt = 0;
-    Node *temp = head;
-    while (temp)
+    if (k == 1)
     {
+        Node *temp = head;
+        head = temp->next;
+        free(temp);
+
+        return head;
+    }
+
+    int cnt = 1;
+    Node *temp = head;
+    Node *pre = NULL;
+
+    while (temp->next != NULL)
+    {
+        if (k == cnt)
+        {
+            pre->next = temp->next;
+            free(temp);
+            break;
+        }
+        pre = temp;
         temp = temp->next;
         cnt++;
     }
 
-    return cnt;
+    return head;
 }
 
 void TravarseLL(Node *head)
@@ -75,20 +93,17 @@ void TravarseLL(Node *head)
 
 int main()
 {
-    
+
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
     vector<int> arr = {2, 5, 8, 9};
 
-    // // Node y = Node(arr[0], nullptr);
-    // Node *x = new Node(arr[0], nullptr);
-    // // cout << y.data << endl;
-    // cout << x->data << endl;
-
     Node *head = ArrayToLL(arr);
 
+    int k = 3;
+    // cin >> k;
+
+    head = removek(head, k);
     TravarseLL(head);
-    cout << endl;
-    cout << "total length : " << LengthOfLL(head) << endl;
 }
